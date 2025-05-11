@@ -46,12 +46,10 @@ public class CalculatingWithCycles {
                 sum += num;
                 System.out.printf("%d) Num is %d, sum is %d%n", num, num, sum);
             } while (num < border);
-            System.out.println("------------------------");
-            System.out.println("Sum of numbers is " + sum);
-        } else {
-            System.out.println("------------------------");
-            System.out.println("Sum of numbers is " + sum);
         }
+        System.out.println("------------------------");
+        System.out.println("Sum of numbers is " + sum);
+
     }
 
 }
