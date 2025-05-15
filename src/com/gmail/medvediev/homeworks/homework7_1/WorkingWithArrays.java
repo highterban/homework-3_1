@@ -53,25 +53,25 @@ public class WorkingWithArrays {
     }
 
     public static void findingMaxAndMin(int[] numbers) {
-        int max = numbers[0];
-        int min = numbers[0];
+
         int maxIndex = 0;
-        int minIndex = 0;
+
         for (int i = 0; i < numbers.length; i++) {
-            if (numbers[i] > max) {
-                max = numbers[i];
+            if (numbers[i] > numbers[maxIndex]) {
                 maxIndex = i;
             }
         }
 
-        System.out.println("Max number: " + max + " Index of max number: " + maxIndex);
+        System.out.println("Max number: " + numbers[maxIndex] + " Index of max number: " + maxIndex);
+
+        int minIndex = 0;
+
         for (int i = numbers.length - 1; i >= 0; i--) {
-            if (numbers[i] < min) {
-                min = numbers[i];
+            if (numbers[i] < numbers[minIndex]) {
                 minIndex = i;
             }
         }
-        System.out.println("Min number: " + min + " Index of min number: " + minIndex);
+        System.out.println("Min number: " + numbers[minIndex] + " Index of min number: " + minIndex);
 
     }
 
