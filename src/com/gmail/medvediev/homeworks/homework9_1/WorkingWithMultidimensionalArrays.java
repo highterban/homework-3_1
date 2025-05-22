@@ -103,7 +103,9 @@ public class WorkingWithMultidimensionalArrays {
         for (int i = 0; i < size; i++) {
             firstDiag += matrix[i][i];
         }
-        if (firstDiag != targetSum) return false;
+        if (firstDiag != targetSum) {
+            return false;
+        }
 
         int secDiag = 0;
         for (int i = 0; i < size; i++) {
