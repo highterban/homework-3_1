@@ -5,10 +5,12 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class WorkingWithMultidimensionalArrays {
     public static void main(String[] args) {
-        System.out.println("Enter the size of the matrix: ");
         Scanner scanner = new Scanner(System.in);
-        int size = scanner.nextInt();
-        int[][] matrix = new int[size][size];
+        System.out.println("Enter number of rows: ");
+        int sizeRows = scanner.nextInt();
+        System.out.println("Enter number of columns: ");
+        int sizeColumns = scanner.nextInt();
+        int[][] matrix = new int[sizeRows][sizeColumns];
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
                 matrix[i][j] = ThreadLocalRandom.current().nextInt(1, 50);
@@ -23,16 +25,16 @@ public class WorkingWithMultidimensionalArrays {
         String isMagic;
         if (isMagicSquare(matrix)) {
             isMagic = "It is a magic square";
-        } else isMagic = "It is not a magic square";
+        } else {
+            isMagic = "It is not a magic square";
+        }
         System.out.print(isMagic);
     }
 
     public static int sumOfEvenRows(int[][] matrix) {
         int sum = 0;
         for (int i = 0; i < matrix.length; i += 2) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                sum += matrix[i][j];
-            }
+            sum += rowSum(matrix, i);
         }
         return sum;
     }
@@ -40,9 +42,7 @@ public class WorkingWithMultidimensionalArrays {
     public static int sumOfOddRows(int[][] matrix) {
         int sum = 0;
         for (int i = 1; i < matrix.length; i += 2) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                sum += matrix[i][j];
-            }
+            sum += rowSum(matrix, i);
         }
         return sum;
     }
@@ -99,21 +99,18 @@ public class WorkingWithMultidimensionalArrays {
             }
         }
 
-        int firstDiag = 0;
+        int firstDiagonal = 0;
         for (int i = 0; i < size; i++) {
-            firstDiag += matrix[i][i];
+            firstDiagonal += matrix[i][i];
         }
-        if (firstDiag != targetSum) {
+        if (firstDiagonal != targetSum) {
             return false;
         }
 
-        int secDiag = 0;
+        int secondDiagonal = 0;
         for (int i = 0; i < size; i++) {
-            secDiag += matrix[i][size - 1 - i];
+            secondDiagonal += matrix[i][size - 1 - i];
         }
-        if (secDiag != targetSum) {
-            return false;
-        }
-        return true;
+        return secondDiagonal == targetSum;
     }
 }
