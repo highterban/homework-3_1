@@ -85,6 +85,13 @@ public class WorkingWithMultidimensionalArrays {
 
     public static boolean isMagicSquare(int[][] matrix) {
         int size = matrix.length;
+
+        for (int[] row : matrix) {
+            if (row.length != size) {
+                return false;
+            }
+        }
+
         int targetSum = rowSum(matrix, 0);
 
         for (int i = 1; i < size; i++) {
@@ -111,6 +118,8 @@ public class WorkingWithMultidimensionalArrays {
         for (int i = 0; i < size; i++) {
             secondDiagonal += matrix[i][size - 1 - i];
         }
+
         return secondDiagonal == targetSum;
+
     }
 }
