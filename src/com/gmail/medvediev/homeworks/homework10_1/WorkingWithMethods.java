@@ -26,7 +26,7 @@ public class WorkingWithMethods {
         System.out.println("Enter you sentence: ");
         String sentence = scanner.next();
         System.out.println("Your reversed sentence: ");
-        reverseSentence(sentence);
+        System.out.println(reverseSentence(sentence));
         System.out.println();
 
         System.out.println("Enter number you want to raise to a pow:");
@@ -84,23 +84,34 @@ public class WorkingWithMethods {
         }
         String reversed = "";
         for (int i = sentence.length() - 1; i >= 0; i--) {
-            System.out.print(sentence.charAt(i));
+            reversed += sentence.charAt(i);
         }
         return reversed;
     }
 
-    public static int numberInPow(int number, int pow) {
-        int numberPow;
-        numberPow = (int) Math.pow(number, pow);
-        return numberPow;
+    public static double numberInPow(int number, int pow) {
+        double result = 1;
+
+        if (pow < 0) {
+            for (int i = 0; i > pow; i--) {
+                result *= number;
+            }
+            result = 1 / result;
+        } else {
+            for (int i = 0; i < pow; i++) {
+                result *= number;
+            }
+        }
+
+        return result;
     }
 
-    public static void printLines(int numberOfLines, String text){
-        if (text == null || numberOfLines <= 0) {
+    public static void printLines(int lineNumber, String text) {
+        if (text == null || lineNumber <= 0) {
             System.out.println("Incorrect input");
             return;
         }
-        for (int i = 0; i < numberOfLines; i++) {
+        for (int i = 0; i < lineNumber; i++) {
             System.out.println(text);
         }
     }
